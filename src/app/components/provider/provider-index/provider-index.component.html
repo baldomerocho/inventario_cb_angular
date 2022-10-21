@@ -1,0 +1,27 @@
+<div>
+  <table class="table-auto max-w-7xl mx-auto w-full">
+    <thead>
+    <tr class="text-left">
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">nombre</th>
+      <th class="px-4 py-2">nit</th>
+      <th class="px-4 py-2">acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let provider of providers">
+      <td class="border px-4 py-2">{{provider.id}}</td>
+      <td class="border px-4 py-2">{{provider.name}}</td>
+      <td class="border px-4 py-2">{{provider.nit}}</td>
+      <td class="border px-4 py-2 space-x-2">
+        <a [routerLink]="['./editar/',provider.id]" class="bg-blue-500 hover:bg-blue-700 text-white text-xs py-1 px-2 rounded">
+          Editar
+        </a>
+        <button (click)="deleteProvider(provider.id)" class="bg-red-500 hover:bg-red-700 text-white text-xs py-1 px-2 rounded">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<div class="max-w-2xl mx-auto py-6">
+  <div class="flex flex-col bg-slate-400 p-6">
+    <div class="flex flex-col">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" id="name" class="p-1 border rounded-md" [(ngModel)]="providerFormUpdate.name"/>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="nit">Nit</label>
+      <input type="text" name="price" id="nit" class="p-1 border rounded-md" [(ngModel)]="providerFormUpdate.nit"/>
+    </div>
+
+
+    <button type="submit" (click)="updateProvider()">Submit</button>
+  </div>
+</div>
