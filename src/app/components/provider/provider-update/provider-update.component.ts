@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../../services/api.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-provider-update',
@@ -14,7 +14,7 @@ export class ProviderUpdateComponent implements OnInit {
     nit: '',
   }
 
-  constructor(private apiService:ApiService, private activatedRoute: ActivatedRoute) {
+  constructor(private apiService:ApiService, private activatedRoute: ActivatedRoute,private router: Router) {
     this.getInfoProvider();
   }
 
@@ -30,9 +30,11 @@ export class ProviderUpdateComponent implements OnInit {
   }
 
   updateProvider() {
-    this.apiService.putData(this.providerFormUpdate,'providers' ).subscribe((data: any) => {
-      console.log(data)
-    });
+    this.activatedRoute.params.subscribe(params => {
+      this.apiService.putData(this.providerFormUpdate, `providers/${params['id']}`).subscribe((data: any) => {
+        this.router.navigate(['./proveedores']);
+      });
+    })
   }
 
 }

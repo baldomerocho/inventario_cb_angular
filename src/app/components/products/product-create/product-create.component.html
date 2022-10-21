@@ -6,6 +6,11 @@
     </div>
 
     <div class="flex flex-col">
+      <label for="qty">Price</label>
+      <input type="number" name="qty" id="qty" class="p-1 border rounded-md" [(ngModel)]="productForm.qty"/>
+    </div>
+
+    <div class="flex flex-col">
       <label for="price">Price</label>
       <input type="number" name="price" id="price" class="p-1 border rounded-md" [(ngModel)]="productForm.price"/>
     </div>

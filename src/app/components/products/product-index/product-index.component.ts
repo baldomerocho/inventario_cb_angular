@@ -20,14 +20,12 @@ export class ProductIndexComponent implements OnInit {
 
   getProducts() {
     this.apiService.getData('products').subscribe((data: any) => {
-      console.log(data);
       this.products = data;
     });
   }
 
   deleteProduct(id: number) {
     this.apiService.deleteData(`products/${id}`).subscribe((data: any) => {
-      console.log(data);
       this.getProducts();
     });
   }

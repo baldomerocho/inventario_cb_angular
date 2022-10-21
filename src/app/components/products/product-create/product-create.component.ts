@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Provider} from "../../../models/provider/provider.model";
 import {ApiService} from "../../../services/api.service";
 import {Router} from "@angular/router";
+import {Product} from "../../../models/product/product.model";
 
 @Component({
   selector: 'app-product-create',
@@ -10,12 +11,13 @@ import {Router} from "@angular/router";
 })
 export class ProductCreateComponent implements OnInit {
   providers: Provider[] = [];
-  productForm = {
+  productForm ={
     name: '',
-    price: '',
-    providerId: '',
+    price: 0,
+    qty: 0,
+    providerId: 0,
   }
-  constructor(private apiService:ApiService) {
+  constructor(private apiService:ApiService, private router: Router) {
     this.getProviders();
   }
 
@@ -24,14 +26,13 @@ export class ProductCreateComponent implements OnInit {
 
   getProviders() {
     this.apiService.getData('providers').subscribe((data: any) => {
-      console.log(data);
       this.providers = data;
     });
   }
 
   createProduct() {
     this.apiService.postData(this.productForm,'products').subscribe((data: any) => {
-      console.log(data);
+      this.router.navigate(['./productos']);
     });
 
   }

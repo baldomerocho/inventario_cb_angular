@@ -3,6 +3,7 @@ import {ProductDetail} from "./product-detail.model";
 
 export interface Product {
   id: number;
+  qty: number;
   name: string;
   price: number;
   providerId: number;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../../services/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-provider-create',
@@ -13,7 +14,7 @@ export class ProviderCreateComponent implements OnInit {
     nit: '',
   }
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService, private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,7 @@ export class ProviderCreateComponent implements OnInit {
   createProvider() {
     this.apiService.postData(this.providerFormCreate,'providers' ).subscribe((data: any) => {
       console.log(data)
+      this.route.navigate(['./proveedores']);
     });
   }
 
